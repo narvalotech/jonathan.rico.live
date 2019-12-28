@@ -1,5 +1,6 @@
 ---
 title: "Welcome !"
+type: "page"
 draft: true
 ---
 
@@ -18,7 +19,7 @@ Projects
 --------
 
 I like to work on projects of my own on my spare time. I enjoy robotics and audio, and like to keep projects small :)  
-You can check a few of them out on the [Projects]( {{<relref "/projects">}}) page.
+You can check a few of them out on the [Projects]( {{<relref "/projects/list">}}) page.
 
 Tutorials
 ---------

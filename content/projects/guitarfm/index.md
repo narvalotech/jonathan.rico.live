@@ -7,3 +7,7 @@ draft: true
 Hello world !
 
 ![PCB image](img/pcb.jpg)
+
+Xtra-large image:
+
+![PCB image](img/ledwatch_top.png)
