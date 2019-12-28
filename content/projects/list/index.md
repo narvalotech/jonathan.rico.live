@@ -4,20 +4,52 @@ type: "page"
 draft: true
 ---
 
-My personal projects, a few unfinished:
+My personal projects, in various states of completion:
+
 
 Audio
 -----
 
 - [GuitarFM]({{<ref "/projects/guitarfm">}}) : An FM transmitter that you plug into an electric guitar
-- [Fvpedal]({{<ref "/projects">}}) : A Guitar pedal with a Spinsemi FV-1 DSP, two effect banks & an attiny micro
+
+- [Fvpedal]({{<ref "/projects/list">}}) : A Guitar pedal with a Spinsemi FV-1 DSP, two effect banks & an attiny uC
+
 
 Wearables
 ---------
 
-- Placeholder text
+- [ledwatch]({{<ref "/projects/list">}}) : A wristwatch with an MSP430 uC, a 3x8 led matrix and an accelerometer. Programmed in bare-metal C.
 
-IoT
----
+- [M-watch]({{<ref "/projects/list">}}) : A smarter follow-up to the ledwatch, with a nRF52 BLE SoC and a modular front/back panel system. Uses apache mynewt or Zephyr RTOS.
 
-- Placeholder text
+
+Robotics & RC
+-------------
+
+- [N-heli]({{<ref "/projects/list">}}) : Reverse-engineering a RC heli IR protocol and controlling it with a Wii nunchuk
+
+- [Balbot]({{<ref "/projects/list">}}) : A two-wheel self-stabilizing robot
+
+- [WifiStunt]({{<ref "/projects/list">}}) : A smartphone-controlled RC stunt car (accelerometer + wifi)
+
+
+Other
+-----
+
+- [Pd-imu]({{<ref "/projects/list">}}) : A school project to develop a real-time remote inertial motion graphing system (Puredata & nRF24)
+
+- [SuperOctogon]({{<ref "/projects/list">}}) : A super-hexagon clone to be played with a remote accelerometer (from the pd-imu project)
+
+- [Wthermo]({{<ref "/projects/list">}}) : A school project (again) to make a remote-controlled thermostat (Labview & zigbee)
+
+
+High school
+-----------
+
+Projects from back when I was in high school:
+
+- [Vtppda]({{<ref "/projects/list">}}) : A smartphone gesture controlled RC car
+
+- [Crawlbot-1]({{<ref "/projects/list">}}) : My very first robot for a french competition (which failed miserably)
+
+- [Crawl-bot-2]({{<ref "/projects/list">}}) : My second robot for the same competition (which failed a bit less miserably, but still). Controlled with an Xbox360 controller
