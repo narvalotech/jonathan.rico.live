@@ -5,13 +5,13 @@ draft: true
 ---
 
 My personal projects, in various states of completion:  
-(If the link redirects here, this means I haven't written the project page yet)
-
+- If the link redirects here, this means I haven't written the project page yet.
+- A few of them are Instructables.com tutorials, so I'll just link directly to that.
 
 Audio
 -----
 
-- [GuitarFM]({{<ref "/projects/guitarfm">}}) : An FM transmitter that you plug into an electric guitar
+- [GuitarFM](../guitarfm) : An FM transmitter that you plug into an electric guitar
 
 - [Fvpedal]({{<ref "/projects/list">}}) : A Guitar pedal with a Spinsemi FV-1 DSP, two effect banks & an attiny uC
 
@@ -27,11 +27,9 @@ Wearables
 Robotics & RC
 -------------
 
-- [N-heli]({{<ref "/projects/list">}}) : Reverse-engineering a RC heli IR protocol and controlling it with a Wii nunchuk
-
 - [Balbot]({{<ref "/projects/list">}}) : A two-wheel self-stabilizing robot
 
-- [WifiStunt]({{<ref "/projects/list">}}) : A smartphone-controlled RC stunt car (accelerometer + wifi)
+- [WifiStunt](https://www.instructables.com/id/WiFi-Stunt-Car/) : A smartphone-controlled RC stunt car (accelerometer + wifi). Bit of a easier follow-up to [AndRC](https://www.instructables.com/id/Android-RC-Car/)
 
 
 Other
@@ -49,8 +47,10 @@ High school
 
 Projects from back when I was in high school:
 
-- [Vtppda]({{<ref "/projects/list">}}) : A smartphone gesture controlled RC car
+- [N-heli](https://www.instructables.com/id/Nunchuk-controlled-Helicopter/) : Reverse-engineering a RC heli IR protocol and controlling it with a Wii nunchuk
+
+- [AndRC](https://www.instructables.com/id/Android-RC-Car/) : A smartphone gesture controlled RC car
 
 - [Crawlbot-1]({{<ref "/projects/list">}}) : My very first robot for a french competition (which failed miserably)
 
-- [Crawl-bot-2]({{<ref "/projects/list">}}) : My second robot for the same competition (which failed a bit less miserably, but still). Controlled with an Xbox360 controller
+- [Crawl-bot-2](https://www.instructables.com/id/Joystick-controlled-Robot/) : My second robot for the same competition (which failed a bit less miserably, but still). Controlled with an Xbox360 controller and a simple python script
