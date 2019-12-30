@@ -1,7 +1,6 @@
 ---
 title: "Projects"
 type: "page"
-draft: true
 ---
 
 My personal projects, in various states of completion:  

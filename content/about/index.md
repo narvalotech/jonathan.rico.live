@@ -1,7 +1,6 @@
 ---
 title: "Welcome !"
 type: "page"
-draft: true
 ---
 
 About me
