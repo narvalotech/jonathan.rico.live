@@ -5,6 +5,19 @@ paginate = 5
 
 staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static/vid"]
 
+[imaging]
+  resampleFilter = "box"
+
+  quality = 80
+
+  # Anchor used when cropping pictures.
+  # Valid values are Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
+  anchor = "smart"
+
+  # Default background color. 
+  # Expects a standard HEX color string with 3 or 6 digits.
+  bgColor = "#ffffff"
+
 [params]
   # dir name of your blog content (default is `content/posts`)
   contentTypeName = "posts"
@@ -14,6 +27,24 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
   showMenuItems = 2
   # Show reading time in minutes for posts
   showReadingTime = false
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = false
+      xHTML = false
 
 [languages]
   [languages.en]
