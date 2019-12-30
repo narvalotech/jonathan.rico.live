@@ -1,6 +1,5 @@
 ---
 title: "Guitarfm"
-date: 2019-12-28T18:10:09+01:00
 image: "/ledwatch_pcb_top.jpg"
 ---
 
@@ -24,7 +23,7 @@ Components:
 - Display: LED 7-segment x4 + TLC59282 driver
 - Control: 3 tactile switches (TL-3315)
 
-[Schematic PDF](guitarfm_v3.pdf)  
+[Schematic PDF](guitarfm_v2.pdf)  
 [Kicad project ZIP](gfm_kicad.zip)  
 [BOM](gfm_bom.ods)
 
