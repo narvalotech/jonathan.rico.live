@@ -4,7 +4,8 @@ type: "page"
 draft: true
 ---
 
-My personal projects, in various states of completion:
+My personal projects, in various states of completion:  
+(If the link redirects here, this means I haven't written the project page yet)
 
 
 Audio
