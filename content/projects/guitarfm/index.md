@@ -58,7 +58,9 @@ For the buttons, I did a little adding and subtracting of the case height, tacti
 For fitting the 1/4in jack I first soldered the signal wires, then heated up the hole in the PLA (\~100°C) and force-screwed it in, warping it a little bit, but now it's firmly attached.
 
 ![guitarfm body](img/gfm_body_1.jpg)
+
 ![guitarfm back](img/gfm_back.jpg)
+
 ![guitarfm plugged in](img/gfm_on_guitar.jpg)
 
 PCB
@@ -80,6 +82,7 @@ As the LDR+diode module was not available on Digikey, I forgot to buy it and so 
 You can also see the antenna wire sticking out of the case, as I didn't take the time to put it back nicely in the case each time.
 
 ![guitarfm opened up](img/gfm_open.jpg)
+
 ![guitarfm pcb](img/gfm_pcb_on.jpg)
 
 Reflow time !  
@@ -117,7 +120,9 @@ This version used a rotary encoder for the interface
 A few pictures:
 
 ![Eagle PCB](img/gfm_v1_eagle.png)
+
 ![Workshop](img/gfm_v1_workshop.jpg)
+
 ![guitarFM v1 powered on](img/gfm_v1_on.jpg)
 
 
