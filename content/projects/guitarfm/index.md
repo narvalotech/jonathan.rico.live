@@ -1,6 +1,8 @@
 ---
 title: "Guitarfm"
-image: "/ledwatch_pcb_top.jpg"
+type: "page"
+cover: "img/gfm_body_1.jpg"
+useRelativeCover : "true"
 ---
 
 Summary

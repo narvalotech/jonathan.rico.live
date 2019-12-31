@@ -1,6 +1,7 @@
 ---
-title: "Welcome !"
+title: "Jon's projects"
 type: "page"
+cover: "/pcb.jpg"
 ---
 
 About me
