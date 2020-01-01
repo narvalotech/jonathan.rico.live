@@ -1,0 +1,5 @@
+{{ with .Get "location" }}
+    <video width="100%" height="500" controls loop muted>
+        <source src="{{ . }}">
+    </video>
+{{ end }}
