@@ -1,0 +1,71 @@
+DEVICE           := msp430f5247
+APPLICATION      := ledwatch
+TILIBPATH        := /home/john/ti
+
+
+################## GCC Root Variable ###################
+GCC_DIR          := $(TILIBPATH)/gcc
+# GCC_BIN_DIR      := $(GCC_DIR)/bin
+GCC_BIN_DIR      := /usr/bin
+GCC_MSP_INC_DIR  := $(GCC_DIR)/include
+LDDIR            := $(GCC_MSP_INC_DIR)/$(shell echo $(DEVICE) | tr A-Z a-z)
+
+######################################
+RM               := rm -rf
+
+######################################
+CC               := $(GCC_BIN_DIR)/msp430-elf-gcc
+GDB	             := $(GCC_BIN_DIR)/msp430-elf-gdb
+
+######################################
+BUILD_DIR         = build
+OBJ_DIR           = $(BUILD_DIR)/obj
+BIN_DIR           = $(BUILD_DIR)/bin
+SRC_DIR           = src
+INC_DIR           = include
+
+ifneq ($(BUILD_DIR),)
+  $(shell [ -d $(BUILD_DIR) ] || mkdir -p $(BUILD_DIR))
+  $(shell [ -d $(OBJ_DIR) ] || mkdir -p $(OBJ_DIR))
+  $(shell [ -d $(BIN_DIR) ] || mkdir -p $(BIN_DIR))
+endif
+
+SRCS             := $(wildcard $(SRC_DIR)/*.c)
+OBJS             := $(patsubst %.c,$(OBJ_DIR)/%.o,$(notdir $(SRCS)))
+ELF              := $(BIN_DIR)/$(APPLICATION).out
+
+
+######################################
+INCLUDES         := -I $(GCC_MSP_INC_DIR) -I $(INC_DIR)
+# CFLAGS           := -mmcu=$(DEVICE) -O0 -g3 -ggdb -Wall -Wextra -Wshadow -MMD
+CFLAGS           := -mmcu=$(DEVICE) -O1 -Wall -Wextra -Wshadow -MMD
+# -Werror
+LDFLAGS          := -L $(GCC_MSP_INC_DIR) -T $(LDDIR).ld -mmcu=$(DEVICE)
+DEPS             := $(OBJS:.o=.d)
+
+######################################
+
+all: $(ELF)
+
+$(ELF) : $(OBJS)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+debug: all
+	$(GDB) $(BIN_DIR)/$(APPLICATION).out
+
+flash: all
+	LD_LIBRARY_PATH=$(TILIBPATH) mspdebug tilib -d /dev/ttyACM0 "prog $(BIN_DIR)/$(APPLICATION).out"
+
+mspd:
+	LD_LIBRARY_PATH=$(TILIBPATH) mspdebug tilib -d /dev/ttyACM0 
+	
+server:
+	$(GCC_BIN_DIR)/gdb_agent_console $(GCC_DIR)/msp430.dat
+
+clean: 
+	rm -rf $(BUILD_DIR)
+
+-include $(DEPS)
