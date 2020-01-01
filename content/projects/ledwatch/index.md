@@ -8,7 +8,7 @@ useRelativeCover : "true"
 Summary
 -------
 
-A simple binary led watch. Programmed in bare-metal C (i.e. no HAL), uses a MSP430 uC and 28 green leds.
+A simple binary led watch. Programmed in bare-metal C (i.e. no HAL), uses a MSP430 uC and 24 green leds.
 
 Features:
 - 16-bit ultra low power uC
