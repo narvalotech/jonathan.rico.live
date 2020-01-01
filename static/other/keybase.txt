@@ -1,0 +1,56 @@
+ ==================================================================
+https://keybase.io/jonrico
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jonathan.rico.live
+  * I am jonrico (https://keybase.io/jonrico) on keybase.
+  * I have a public key ASCm3g_ksOklJgVHLNaxB17cb4NfINI6tGMg8KEEog5MzAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120dc2f48b4fa1a02b012a04f5c1dffe42051a69517e4c05caf2389bc84e07193d00a",
+      "host": "keybase.io",
+      "kid": "0120a6de0fe4b0e9252605472cd6b1075edc6f835f20d23ab46320f0a104a20e4ccc0a",
+      "uid": "076e6ed371a601542b6de1e20b701a19",
+      "username": "jonrico"
+    },
+    "merkle_root": {
+      "ctime": 1577898513,
+      "hash": "e35cd52a2e490802972be89bb729a3546f9c042ff4d95ff6026b61d6d39ac9ff12bb6b69c3f79bb1b55160dbc2bf0827b444ac0f99018f2647cb28f5ada29c94",
+      "hash_meta": "1a87e69543a569659f0270df961dbbdb914ee221d049c60c9c3f0ee3333cb7f7",
+      "seqno": 14042517
+    },
+    "service": {
+      "entropy": "lSMuRrqKYI4fEa3WrOnR4iO8",
+      "hostname": "jonathan.rico.live",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.1.0"
+  },
+  "ctime": 1577898529,
+  "expire_in": 504576000,
+  "prev": "03e490de80dee2c4c32a329e84262c0bacb7bf16ed6c2623064e88c04e6badff",
+  "seqno": 24,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgpt4P5LDpJSYFRyzWsQde3G+DXyDSOrRjIPChBKIOTMwKp3BheWxvYWTESpcCGMQgA+SQ3oDe4sTDKjKehCYsC6y3vxbtbCYjBk6IwE5rrf/EICcO5TBHR9GUjzFWitA2NqG6UZY0xCU2sCbc0PopULEuAgHCo3NpZ8RAY9ygLatGLMK02bNCylhGHq40p/I9xupWUFS6FQtxPr/ZyjkNUHVKGwejXdUKf9p8KsWh2CnuWjdXFKqSPeWZBqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIAtXY7uA5/4riCtCfnJ7IWhij3U6erNVaDZDjAdzSPzko3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jonrico
+
+==================================================================
