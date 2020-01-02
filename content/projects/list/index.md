@@ -38,7 +38,7 @@ Other
 
 - [SuperOctogon]({{<ref "/projects/list">}}) : A super-hexagon clone to be played with a remote accelerometer (from the pd-imu project)
 
-- [Wthermo]({{<ref "/projects/list">}}) : A school project (again) to make a remote-controlled thermostat (Labview & zigbee)
+- [Wthermo]({{<ref "/projects/list">}}) : A school project to make a remote-controlled thermostat (Labview & zigbee)
 
 
 High school
@@ -50,6 +50,6 @@ Projects from back when I was in high school:
 
 - [AndRC](https://www.instructables.com/id/Android-RC-Car/) : A smartphone gesture controlled RC car
 
-- [Crawlbot-1]({{<ref "/projects/list">}}) : My very first robot for a french competition (which failed miserably)
+- [Crawl-bot-1](../crawlbot1) : My very first robot for a french competition (which failed miserably)
 
 - [Crawl-bot-2](https://www.instructables.com/id/Joystick-controlled-Robot/) : My second robot for the same competition (which failed a bit less miserably, but still). Controlled with an Xbox360 controller and a simple python script
