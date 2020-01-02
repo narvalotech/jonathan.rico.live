@@ -26,7 +26,7 @@ Wearables
 Robotics & RC
 -------------
 
-- [Balbot]({{<ref "/projects/list">}}) : A two-wheel self-stabilizing robot
+- [Balbot](../pd-imu/#balance-bot) : A two-wheel self-stabilizing robot
 
 - [WifiStunt](https://www.instructables.com/id/WiFi-Stunt-Car/) : A smartphone-controlled RC stunt car (accelerometer + wifi). Bit of a easier follow-up to [AndRC](https://www.instructables.com/id/Android-RC-Car/)
 
@@ -34,11 +34,9 @@ Robotics & RC
 Other
 -----
 
-- [Pd-imu]({{<ref "/projects/list">}}) : A school project to develop a real-time remote inertial motion graphing system (Puredata & nRF24)
+- [Pd-imu](../pd-imu) : A school project to develop a real-time remote inertial motion graphing system (Puredata & nRF24)
 
-- [SuperOctogon]({{<ref "/projects/list">}}) : A super-hexagon clone to be played with a remote accelerometer (from the pd-imu project)
-
-- [Wthermo]({{<ref "/projects/list">}}) : A school project to make a remote-controlled thermostat (Labview & zigbee)
+- [SuperOctagon](../pd-imu/#superoctagon) : A super-hexagon clone to be played with a remote accelerometer (from the pd-imu project)
 
 
 High school
