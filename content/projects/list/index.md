@@ -4,7 +4,7 @@ type: "page"
 ---
 
 My personal projects, in various states of completion:  
-- If the link redirects here, this means I haven't written the project page yet.
+- If the link redirects here, this means I haven't written the project page yet ¯\\\_(ツ)\_/¯
 - A few of them are Instructables.com tutorials, so I'll just link directly to that.
 
 Audio
@@ -12,7 +12,7 @@ Audio
 
 - [GuitarFM](../guitarfm) : An FM transmitter that you plug into an electric guitar
 
-- [Fvpedal]({{<ref "/projects/list">}}) : A Guitar pedal with a Spinsemi FV-1 DSP, two effect banks & an attiny uC
+- [Fvpedal](../fvpedal) : A Guitar pedal with a Spinsemi FV-1 DSP, two effect banks & an attiny uC
 
 
 Wearables
