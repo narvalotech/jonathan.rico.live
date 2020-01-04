@@ -20,7 +20,7 @@ Wearables
 
 - [ledwatch](../ledwatch) : A wristwatch with an MSP430 uC, a 3x8 led matrix and an accelerometer. Programmed in bare-metal C.
 
-- [M-watch]({{<ref "/projects/list">}}) : A smarter follow-up to the ledwatch, with a nRF52 BLE SoC and a modular front/back panel system. Uses apache mynewt or Zephyr RTOS.
+- [M-watch](../m-watch) : A smarter follow-up to the ledwatch, with a nRF52 BLE SoC and a modular front/back panel system. Uses apache mynewt or Zephyr RTOS.
 
 
 Robotics & RC
