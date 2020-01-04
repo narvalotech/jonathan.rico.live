@@ -63,7 +63,7 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
     dateFormatList = "2006-01-02"
 
     [languages.en.params.logo]
-      logoText = "[jon@web ~/]$ "
+      logoText = "[jon@server ~/]$ "
       logoHomeLink = "/"
     # or
     #
