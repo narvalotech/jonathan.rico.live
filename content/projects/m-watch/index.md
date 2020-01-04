@@ -89,7 +89,7 @@ The body was designed in SolidWorks, I tried another workflow for designing the 
 13. Align PCB models with watch body
 14. Finish designing watch body
 
-The result seems to fit quite nicely, I guess we'll see for sure when I actually build this thing !
+Again, printed at shapeways, and the models seems to fit quite nicely, I guess we'll see for sure when I actually build it entirely !
 
 [Assembly STEP file](3d/watch_assembled.step)
 
