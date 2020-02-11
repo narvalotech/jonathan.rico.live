@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /*.mp4$
+
+Sitemap: https://jonathan.rico.live/sitemap.xml
