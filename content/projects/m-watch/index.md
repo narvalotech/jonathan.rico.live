@@ -136,21 +136,86 @@ Debug board
 ![Debug pcb](img/mw_charger.png)
 
 
-Project status
---------------
+Project status (2020-01-06)
+---------------------------
 
 Due to my recent job change & relocation to Norway, I had to give away some essential tools before leaving (limited space in suitcases), and as such, this project is now on pause.
 
 I will try to get a headstart on programming though, as it doesn't require any hardware except the dev kit which I already have.
 
-Things to do:
+Status update (2020-08-19)
+--------------------------
+
+A few updates:
+
+A few months ago, my manager at Nordic offered to have the PCBs fabbed, and
+that I buy the components & do the assembly.
+
+BUT I had to do an express redesign to use the
+[nRF52840](https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52840
+) instead of the 832 (trickier because of the IC package).
+
+I received half of the PCBs a month ago (if I remember correctly), ordered the
+stencils from [Elecrow](https://www.elecrow.com/pcbstencil.html), and the
+components from DigiKey.
+
+I still haven't received the main board (with the MCU) yet, but I can still
+start programming using the [nRF52 DK](https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK
+).
+
+Front panel
+-----------
+
+I managed to do the reflow soldering, on the ceramic cooktop (again), but had a
+few issues with the smallest component (U1: 1x1.2mm, 6pads), so I had to rework
+it a bit. I still haven't figured out where to buy 98% alcohol in norway yet, so
+the boards were not cleaned properly.
+
+![Applying the stencil](img/photos/fp_stencil.jpg)
+
+![Front-panel PCB front](img/photos/fp_front.jpg)
+
+![Front-panel PCB back](img/photos/fp_back.jpg)
+
+Debug board
+-----------
+
+I found out that the charge and debug board had the connector mirrored, but
+since no IOs were explicitely labeled and there are no components on this board
+I could just connect the front-panel upside-down, like you can see in the videos.
+
+This board is pretty handy, I can program/debug the RGB display without having to
+solder wires directly to the board.
+
+![Charge/debug PCB](img/photos/chg_front.jpg)
+
+Videos
+------
+
+A quick test of the RGB animation: this just cycles through the colors, pretty
+rapidly so I can sport if there are SPI communication issues.
+***
+{{< videogif location="vid/rgb_animation.mp4" >}}
+
+A test of the bcd display code ported from the ledwatch project. I tried to slow
+down the video on the animation this time.
+***
+{{< videogif location="vid/counter_animation.mp4" >}}
+
+A test with the Nordic SDK BLE Blinky example, where I can trigger the animation
+via the Blinky android app.
+***
+{{< videogif location="vid/nordic_blinky.mp4" >}}
+
+Current project status
+----------------------
+
+Things left to do:
 - Finish cradle 3d model
 - Print cradle
-- Send the PCBs to fab
-- Finish the BOM
-- Buy the components
-- Reflow the components (farewell my soldering station..)
+- Reflow the main board
 - Test & bring-up the core board
-- Test the display board
 - Program the watch
+  - Bare-bones functions w/ softdevice
+  - Proper zephyr app w/ Nordic Connect SDK
 - Make a small android companion app
