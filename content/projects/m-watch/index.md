@@ -207,15 +207,133 @@ via the Blinky android app.
 ***
 {{< videogif location="vid/nordic_blinky.mp4" >}}
 
-Current project status
-----------------------
+Status update (2021-04-05)
+--------------------------
 
-Things left to do:
-- Finish cradle 3d model
-- Print cradle
-- Reflow the main board
-- Test & bring-up the core board
-- Program the watch
-  - Bare-bones functions w/ softdevice
-  - Proper zephyr app w/ Nordic Connect SDK
-- Make a small android companion app
+### Main board reflow
+
+Long time since I updated this page :p
+Anyway, I received the main (mother?) board pcbs and successfuly reflowed it sometime in october 2020. Tried to record a video at the same time but almost burned the components, oops !
+***
+{{< videogif location="vid/reflow.mp4" >}}
+
+I did not have to touch-up a lot of components, only a few upside-down inductors and two bridges on the display connector.
+I then was able to successfully flash the nrf52840 SoC with the software I had before, just had to sort out some GPIO issues since the devkit obviously didn't have the same pin assignments as the final board.
+
+Hello world !
+***
+{{< videogif location="vid/sd_first_init.mp4" >}}
+
+Accelerometer responding properly
+***
+{{< videogif location="vid/sd_display_accel_test.mp4" >}}
+
+Running from battery
+***
+{{< videogif location="vid/sd_battery.mp4" >}}
+
+Unfortunately, in my enthusiasm I forgot to reset all of the power supply's preset to something sensible and pressed the wrong button... blasted the whole pcb with 30V@3A and smoked all the components on the Vbatt rail :/
+So I had to change those components, and now I'll remember to check my presets haha.
+
+### Watch shell / body
+
+Since I did not order the pcbs myself, I did not have any control over the thickness, and I had designed the case for a display PCB of 0.6mm and a main PCB of 0.8mm.
+The display PCB's real thickness was .8mm, so still manageable, but the main PCB was double the size, at a standard 1.6mm.
+This caused the case to not be able to close, so I adjusted the back of the case, but unfortunately, the button holes did not align with the buttons on the pcb.
+
+Also, a few weeks ago, I finally had nuked my windows 7 dual-boot (with solidworks) that was taking way too much space and that I was using at most once every 3 months.
+
+So long story short, I had to redraw the front and back of the case using FreeCAD. I found out about [realthunder's fork](https://github.com/realthunder/FreeCAD_assembly3/releases), that addressed most of the issues that I had with freecad: topo naming and a sane assembly workflow.
+
+The drawing workflow was a bit rough over the edges, having to convert from SVG to the Draft workbench and then to the Sketcher workbench to finally create a part, but I'm happy overall,
+as it was way more stable than last time I used it in 2017, i.e. not crashing every 10mins. 
+
+The biggest thing I missed was the ability to scale and mirror the sketch geometry.
+Another rough module is the chamfer / fillets, but I think this is more the kernel than freecad's fault. 
+I had to resort to loft/sweeps to do the equivalent of a curved chamfer in solidworks.
+
+I still wouldn't pick freecad over solidworks for a commercial product, but I think it'll be my go-to CAD program for hobby stuff from now on, and it saves me from having to maintain a working/up-to-date windows install (yuck!).
+
+![Freecad assembly](img/freecad.png)
+
+### Assembly glamour shots 
+
+![Display back](img/photos/as_disp_back.JPG)
+[High res](img/photos/hr/as_disp_back.JPG)
+![Main PCB front](img/photos/as_core2.JPG)
+[High res](img/photos/hr/as_core2.JPG)
+![Main PCB back](img/photos/as_core_back.JPG)
+[High res](img/photos/hr/as_core_back.JPG)
+![Main PCB with battery](img/photos/as_battery.JPG)
+[High res](img/photos/hr/as_battery.JPG)
+
+### Cradle
+
+I also designed a cradle to easily charge and flash/debug the watch without having to disassemble it everytime:
+The plan was to have some pogo pins on the cradle, contacting another set of pogo pins set in the back of the case, which then would make contact with pads on the main PCB.
+
+I was also planning to embed tiny rare-earth magnets on the back of the case to make the watch snap to the cradle.
+This strategy was to avoid having to have a custom fragile (maybe flex) PCB for the contact points, so to be able to disassemble the watch without being overly cautious.
+
+So that's the theory, in practice, it was kind of a ~~disaster~~ less-than-ideal solution.
+
+First off, I did not have the magnets, so I had to use rubber bands (lol) to make the pins press agains the watch.
+
+Then, I did not have super-tight manufacturing tolerances, so I designed it to be a bit floating so I could make contact. But then it's super finicky to move the watch just right to be able to flash via SWD.
+
+And then there is the issue of actually attaching the damn internal pogo pins to the back of the case. I used superglue, but then I had to detach them (because of the whole pcb-too-thick thing) and glue them to another back. Problem is that the glue went over the contacts (on the outside) and I had to scrape it off, so now it's not making good contact anymore, and I scraped all of the coating on one of the pins so it oxidizes.
+
+Case in point: I recently re-printed the case (my 8mo daughter killed the first one) and had to reattach the internal pogo pins, and now I can't even flash the damn thing without taking it apart. Luckily I now have zephyr and DFU but still.
+
+Anyway, here's a picture
+![Charger assembly](img/mw_fc_charger.png)
+
+And how it looks like in real life
+![Cradle pogo pins](img/photos/cradle_pogo.jpg)
+![Cradle back](img/photos/cradle_back.jpg)
+![Cradle with watch](img/photos/cradle_watch_1.jpg)
+
+So for the next watch (nrf53-based), I am not making the same mistake: I'll be using a waterproof usb-c connector + a bus switch to flash/debug with a special cable.
+[Schematic sneak peek](pdf/W53.pdf)  
+
+### Nordic Connect SDK / Zephyr
+
+I started to port the firmware to [Zephyr / NCS](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/introduction.html) in november, and had feature parity mid-december (tough to find time to work on projects with a small kid haha).
+
+Initially, I had some issues with the drivers, and I didn't find the driver subsystem to be very mature, e.g. basic things like re-initializing a stuck i2c peripheral is (was?) basically impossible by design.
+I first started with the APA102 led driver in the zephyr distribution, but had to revert to my own (when I did the softdevice version) because of missing features.
+
+I'm still on the fence for the accelerometer driver, zephyr's is very basic, doesn't support filtering, gestures stuff like that. So maybe I'll revert back to mine, maybe I'll add those features to the zephyr upstream driver, we'll see how much time I have.
+
+Another pain point was the DFU / image signing setup. I started with version 1.4 of NCS, and the documentation was not very clear to say the least, it was a bit like asking a question in the french administration, you get referred to a whole lot of places, but the info is either not relevant, or contradicts the info you get in other places.
+
+I was somehow able to make it work, because I wasn't the only poor sap that had to deal with that, so there were a few devzone tickets and I could read the CMakeLists to make sense of the signing logic.
+
+Luckily NCS 1.5 has improved on that front and docs are a bit more clear on the steps needed to implement signed OTA DFU.
+
+Other than those two issues, I'm loving zephyr/NCS:
+- power management / sleep *just works*, no more fiddling around
+- nice RTOS, docs & sources are easy to reason about
+- batteries included: part of the distributions are a lot of drivers and subsystems, from console I/O to bluetooth/thread/zigbee stacks, to (okay) sensor drivers.
+- first-class linux support for build system
+- no tedious makefiles to edit (like with the previous nRF5 SDK)
+- portability! you can compile your application to either the devkit or the final PCB, with a single "-b" command-line flag. If you did your homework correctly with the devicetree it just works.
+
+I'll soon (-ish) have a short "Getting started with NCS/Zephyr" guide to summarize the steps I had to take to go from devkit to custom PCB with bluetooth and signed OTA DFU.
+
+### Software features
+
+I've been wearing the watch for at least 2 months now, doing the dishes, havving my daughter trying to eat it (lol) and it held up good so far.
+I have to admit, I got a bit distracted with my next project, and the current "dumb" watch feature set is enough for me right now, so I did not take the time to develop all the bluetooth/smart features I wanted. 
+
+I did implement the bluetooth CTS (Current Time Service) though to be able to auto-set the time when my android connects to it. But yeah, I think part of my non-motivation is that it feels too much like my day job, only on my own time.
+
+Anyway, the repo is here: https://github.com/narvalotech/rgbw_zephyr
+
+No comments of course, that'd be too easy haha !
+Also you'll see a lot of commits trying to fix a buggy metronome feature, I wanted a soundbrenner copycat (i.e. vibrating metronome) but found out that the motor is not strong enough for me to sync while playing guitar, so I'll be removing it later.
+
+### Android app
+
+Also started to look into programming an app to set the time, and do other nifty stuff, like FIDO/U2F, but haven't gotten the time to fully dive into the android app development world. Maybe this summer, or I can also take a look at flutter, we'll see.
+
