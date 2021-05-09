@@ -34,7 +34,7 @@ Specs
 -----
 
 Components:
-- BLE SoC: [nRF52832](https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52832)
+- BLE SoC: [~~nRF52832~~](https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52832) [nRF52840](https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52840)
 - Leds: [APA102-2020](https://www.adafruit.com/product/3341)
 - Accelerometer: [LIS3DH](https://www.st.com/en/mems-and-sensors/lis3dh.html)
 - Charger: [bq21040](http://www.ti.com/product/BQ21040)
@@ -51,11 +51,16 @@ Components:
 - Connector male: [559090274](https://www.digikey.com/product-detail/en/molex/0559090274/WM3450CT-ND/2405679)
 - Devkit & programmer/debugger: [nRF52-DK](https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52-DK)
 
-Project files: (as-is, pcbs have not been built yet)
+Project files
+-------------
 
-Core board:  
+Core board (never actually assembled):  
 [Schematic PDF](pdf/rgbw.pdf)  
 [Kicad project ZIP](zip/rgbw.zip)
+
+Core board (nRF52840 version):  
+[Schematic PDF](pdf/rgbw840.pdf)  
+[Kicad project ZIP](zip/rgbw840.zip)
 
 Display board:  
 [Schematic PDF](pdf/fp-rgb.pdf)  
@@ -68,6 +73,14 @@ Charger/Debug board:
 Board assembly:
 [Exploded view PDF](pdf/assembly.pdf)
 
+CAD files:  
+[1st version - solidworks](zip/solidworks.zip)  
+[2nd version - freecad](zip/freecad.zip)  
+
+Table of contents
+-----------------
+
+{{< table_of_contents >}}
 
 Mechanical
 ----------
@@ -254,7 +267,7 @@ I had to resort to loft/sweeps to do the equivalent of a curved chamfer in solid
 
 I still wouldn't pick freecad over solidworks for a commercial product, but I think it'll be my go-to CAD program for hobby stuff from now on, and it saves me from having to maintain a working/up-to-date windows install (yuck!).
 
-![Freecad assembly](img/freecad.png)
+![Freecad assembly](img/mw_freecad.png)
 
 ### Assembly glamour shots 
 
@@ -328,7 +341,7 @@ I have to admit, I got a bit distracted with my next project, and the current "d
 
 I did implement the bluetooth CTS (Current Time Service) though to be able to auto-set the time when my android connects to it. But yeah, I think part of my non-motivation is that it feels too much like my day job, only on my own time.
 
-Anyway, the repo is here: https://github.com/narvalotech/rgbw_zephyr
+Anyway, the repo is here, with an up to date list of features: https://github.com/narvalotech/rgbw_zephyr
 
 No comments of course, that'd be too easy haha !
 Also you'll see a lot of commits trying to fix a buggy metronome feature, I wanted a soundbrenner copycat (i.e. vibrating metronome) but found out that the motor is not strong enough for me to sync while playing guitar, so I'll be removing it later.
