@@ -5,7 +5,7 @@ cover: "img/mw_exploded.png"
 useRelativeCover : "true"
 ---
 
-Summary
+Intro
 -------
 
 Designed as a follow-up to [Ledwatch](../ledwatch).
@@ -350,3 +350,16 @@ Also you'll see a lot of commits trying to fix a buggy metronome feature, I want
 
 Also started to look into programming an app to set the time, and do other nifty stuff, like FIDO/U2F, but haven't gotten the time to fully dive into the android app development world. Maybe this summer, or I can also take a look at flutter, we'll see.
 
+## Demo videos
+
+### BCD clock
+{{< videogif location="vid/clock_bcd.mp4" >}}
+
+### BCD clock, digital clock and current date
+{{< videogif location="vid/clock_full.mp4" >}}
+
+### Stopwatch
+{{< videogif location="vid/stopwatch.mp4" >}}
+
+### Timer
+{{< videogif location="vid/timer.mp4" >}}
