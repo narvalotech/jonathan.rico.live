@@ -1,4 +1,6 @@
 User-agent: *
 Disallow: /*.mp4$
+Disallow: /stats.html$
+Disallow: /recettes.html$
 
 Sitemap: https://jonathan.rico.live/sitemap.xml
