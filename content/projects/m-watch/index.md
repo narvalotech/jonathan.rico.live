@@ -309,6 +309,13 @@ And how it looks like in real life
 So for the next watch (nrf53-based), I am not making the same mistake: I'll be using a waterproof usb-c connector + a bus switch to flash/debug with a special cable.
 [Schematic sneak peek](pdf/W53.pdf)  
 
+#### Update 2022-02-23:
+I tried ordering another type of pins from a different [manufacturer on aliexpress](https://www.aliexpress.com/item/4001036082221.html).
+I removed the inner one and did a quick re-print of the back piece, this time heat-setting them in the PLA. 
+They're bigger (2mm diameter) and work so much better than the previous ones !
+I'm still using a usb-c connector for the nRF5340-based watch, but maybe I'll re-use pogo pins after all in future projects.
+![Back piece with new pins](img/photos/back_newpins.jpg)
+
 ### Nordic Connect SDK / Zephyr
 
 I started to port the firmware to [Zephyr / NCS](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/introduction.html) in november, and had feature parity mid-december (tough to find time to work on projects with a small kid haha).
