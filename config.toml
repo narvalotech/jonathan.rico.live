@@ -1,7 +1,7 @@
 baseurl = "https://jonathan.rico.live"
 languageCode = "en-us"
 theme = "hello-friend"
-paginate = 5
+paginate = 20
 
 staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static/vid"]
 
@@ -20,11 +20,11 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
 
 [params]
   # dir name of your blog content (default is `content/posts`)
-  contentTypeName = "posts"
+  contentTypeName = "blog"
   # "light" or "dark"
   defaultTheme = "dark"
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+  showMenuItems = 3
   # Show reading time in minutes for posts
   showReadingTime = false
 
@@ -61,6 +61,7 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
     minuteReadingTime = "min read"
     dateFormatSingle = "2006-01-02"
     dateFormatList = "2006-01-02"
+    lastModDisplay = "Last modified:"
 
     [languages.en.params.logo]
       logoText = "[jon@server ~/]$ "
@@ -79,3 +80,7 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
         identifier = "projects"
         name = "Projects"
         url = "/projects/list"
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/blog"
