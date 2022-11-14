@@ -34,6 +34,8 @@ Robotics & RC
 Other
 -----
 
+- [Jenkins-juletre](../jenkins-juletre) : A christmas-themed CI load visualization.
+
 - [Pd-imu](../pd-imu) : A school project to develop a real-time remote inertial motion graphing system (Puredata & nRF24)
 
 - [SuperOctagon](../pd-imu/#superoctagon) : A super-hexagon clone to be played with a remote accelerometer (from the pd-imu project)
