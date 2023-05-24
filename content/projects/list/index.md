@@ -34,6 +34,8 @@ Robotics & RC
 Other
 -----
 
+- [Mini control panel](../control-panel) : A small control panel for my daughter to play with.
+
 - [Jenkins-juletre](../jenkins-juletre) : A christmas-themed CI load visualization.
 
 - [Pd-imu](../pd-imu) : A school project to develop a real-time remote inertial motion graphing system (Puredata & nRF24)
