@@ -34,6 +34,8 @@ Robotics & RC
 Other
 -----
 
+- [Split keyboard](../split-keyboard) : A mechanical split keyboard
+
 - [Usb switch](../usb-switch) : A USB power/data cutoff switch.
 
 - [Mini control panel](../control-panel) : A small control panel for my daughter to play with.
