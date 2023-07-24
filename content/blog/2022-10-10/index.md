@@ -134,43 +134,43 @@ There are multiple ways of adding breakpoints:
 - function in file: `break bt.c:cmd_init`
 - memory address: `b *(0x00022244)`
 
-##### List breakpoints
+#### List breakpoints
 
 Will also list watchpoints
 
 `info break`
 
-##### Delete a breakpoint
+#### Delete a breakpoint
 
 Get the breakpoint ID from `info break`, e.g., 5 then use it: `delete 5`
 
-#### Watchpoints
+### Watchpoints
 
 Say we want to watch a variable named 'ctx_shell':
 `watch ctx_shell`
 
-#### Call stack
+### Call stack
 
 Call `backtrace` or `bt`.
 Get something like this:
 
 ``` shell
-##0  0x00022244 in cmd_init (sh=0x50ad0 <shell_uart>, argc=1, argv=0x20009168 <shell_uart_stack+1704>)
+#0  0x00022244 in cmd_init (sh=0x50ad0 <shell_uart>, argc=1, argv=0x20009168 <shell_uart_stack+1704>)
     at /home/john/repos/zephyrproject/zephyr/subsys/bluetooth/shell/bt.c:706
-##1  0x00009c30 in exec_cmd (help_entry=0x20009150 <shell_uart_stack+1680>, argv=0x20009168 <shell_uart_stack+1704>,
+#1  0x00009c30 in exec_cmd (help_entry=0x20009150 <shell_uart_stack+1680>, argv=0x20009168 <shell_uart_stack+1704>,
     argc=<optimized out>, shell=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:558
-##2  execute (shell=shell@entry=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:800
-##3  0x00009e4e in state_collect (shell=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1002
-##4  shell_process (shell=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1470
-##5  0x000486b0 in shell_signal_handle (shell=shell@entry=0x50ad0 <shell_uart>, sig_idx=sig_idx@entry=SHELL_SIGNAL_RXRDY,
+#2  execute (shell=shell@entry=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:800
+#3  0x00009e4e in state_collect (shell=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1002
+#4  shell_process (shell=0x50ad0 <shell_uart>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1470
+#5  0x000486b0 in shell_signal_handle (shell=shell@entry=0x50ad0 <shell_uart>, sig_idx=sig_idx@entry=SHELL_SIGNAL_RXRDY,
     handler=handler@entry=0x9c75 <shell_process>) at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1289
-##6  0x0000a63a in shell_thread (arg_log_backend=<optimized out>, arg_log_level=<optimized out>, shell_handle=0x50ad0 <shell_uart>)
+#6  0x0000a63a in shell_thread (arg_log_backend=<optimized out>, arg_log_level=<optimized out>, shell_handle=0x50ad0 <shell_uart>)
     at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1346
-##7  shell_thread (shell_handle=0x50ad0 <shell_uart>, arg_log_backend=<optimized out>, arg_log_level=<optimized out>)
+#7  shell_thread (shell_handle=0x50ad0 <shell_uart>, arg_log_backend=<optimized out>, arg_log_level=<optimized out>)
     at /home/john/repos/zephyrproject/zephyr/subsys/shell/shell.c:1305
-##8  0x00047bd0 in z_thread_entry (entry=0xa5a9 <shell_thread>, p1=<optimized out>, p2=<optimized out>, p3=<optimized out>)
+#8  0x00047bd0 in z_thread_entry (entry=0xa5a9 <shell_thread>, p1=<optimized out>, p2=<optimized out>, p3=<optimized out>)
     at /home/john/repos/zephyrproject/zephyr/lib/os/thread_entry.c:36
-##9  0xaaaaaaaa in ?? ()
+#9  0xaaaaaaaa in ?? ()
 Backtrace stopped: previous frame identical to this frame (corrupt stack?)
 ```
 
@@ -278,21 +278,21 @@ In a nutshell, the MCU writes its data to a ring buffer in RAM, which is then re
 There is a logging backend in zephyr for it. One can disable UART logging and enable RTT with this configuration:
 
 ``` conf
-## Enable logging (and redirect printk to log output)
+# Enable logging (and redirect printk to log output)
 CONFIG_LOG=y
 CONFIG_LOG_PRINTK=y
 CONFIG_LOG_MODE_IMMEDIATE=y
 
-## Free up UART
+# Free up UART
 CONFIG_SERIAL=y
 CONFIG_UART_CONSOLE=n
 CONFIG_LOG_BACKEND_UART=n
 
-## Enable logging on RTT
+# Enable logging on RTT
 CONFIG_LOG_BACKEND_RTT=y
 CONFIG_USE_SEGGER_RTT=y
 CONFIG_SEGGER_RTT_BUFFER_SIZE_UP=8192
-## Always get the latest logs, even if not read yet
+# Always get the latest logs, even if not read yet
 CONFIG_LOG_BACKEND_RTT_MODE_OVERWRITE=y
 ```
 
@@ -327,7 +327,7 @@ Here is how to send the contents of a buffer using the SPIM peripheral on an nRF
 This particular piece of code (ran in the zephy blinky sample) has a processing time of ~30us between transfers.
 
 ``` c
-##define INST NRF_SPIM3
+#define INST NRF_SPIM3
 
 void spi_test(void)
 {
@@ -385,7 +385,7 @@ That can be pretty useful for some basic code profiling and execution context lo
 #### Set a pin value
 
 ```c
-##define MYPIN 10
+#define MYPIN 10
 
 /* Configure pin 0.10 as output */
 NRF_P0->DIRSET = (1 << MYPIN);
@@ -405,7 +405,7 @@ NRF_P0->OUT ^= (1 << MYPIN);
 #### Read a pin value
 
 ```c
-##define MYPIN 10
+#define MYPIN 10
 
 /* Configure pin 0.10 as input */
 NRF_P0->DIRCLR = (1 << MYPIN);
@@ -429,17 +429,17 @@ This sample assumes a radio stack (e.g, BLE) will configure and enable the radio
 On nRF53, as the PPI configuration is defined in the RADIO peripheral, modifying it might break radio stacks that depend on that PPI configuration. You should instead find out what channel will be used by the stack and subscribe to it. Here we assume channels 5 for START and 6 for END.
 
 ```c
-##if defined(NRF_DPPIC_NS)
-##define NRF_GPIOTE NRF_GPIOTE_NS
-##define NRF_RADIO  NRF_RADIO_NS
-##define CHANNEL_START 5
-##define CHANNEL_END   6
-##else
-##define CHANNEL_START 16
-##define CHANNEL_END   17
-##endif
+#if defined(NRF_DPPIC_NS)
+#define NRF_GPIOTE NRF_GPIOTE_NS
+#define NRF_RADIO  NRF_RADIO_NS
+#define CHANNEL_START 5
+#define CHANNEL_END   6
+#else
+#define CHANNEL_START 16
+#define CHANNEL_END   17
+#endif
 
-##define OUTPIN  10
+#define OUTPIN  10
 
 /* Configure output pin */
 NRF_P0->DIRSET = (1 << OUTPIN);
@@ -453,7 +453,7 @@ NRF_GPIOTE->CONFIG[2] |= 3 << 16; /* Toggle pin on TASKS_OUT */
 NRF_GPIOTE->CONFIG[2] |= 0 << 20; /* Initial pin value is LOW */
 
 /* Link RADIO and GPIOTE using (D)PPI */
-##if defined(NRF_DPPIC_NS)
+#if defined(NRF_DPPIC_NS)
 
 /* We don't write to the RADIO peripheral as it might
  * be cleared by the radio stack. Instead, we assume
@@ -466,7 +466,7 @@ NRF_DPPIC_NS->CHENSET         = 1 << CHANNEL_START;
 // NRF_RADIO->PUBLISH_END    = CHANNEL_END | (1 << 31);
 NRF_GPIOTE->SUBSCRIBE_CLR[2] = CHANNEL_END | (1 << 31);
 NRF_DPPIC_NS->CHENSET        = 1 << CHANNEL_END;
-##else
+#else
 
 NRF_PPI->CH[CHANNEL_START].EEP = &NRF_RADIO->EVENTS_ADDRESS;
 NRF_PPI->CH[CHANNEL_START].TEP = &NRF_GPIOTE->TASKS_SET[2];
@@ -475,7 +475,7 @@ NRF_PPI->CHENSET               = 1 << CHANNEL_START;
 NRF_PPI->CH[CHANNEL_END].EEP = &NRF_RADIO->EVENTS_END;
 NRF_PPI->CH[CHANNEL_END].TEP = &NRF_GPIOTE->TASKS_CLR[2];
 NRF_PPI->CHENSET             = 1 << CHANNEL_END;
-##endif
+#endif
 ```
 
 ## Execution context
@@ -505,19 +505,19 @@ Install the babeltrace2 python bindings:
 
 `zephyr/samples/basic/threads/prj.conf`
 ```
-## Free up UART
+# Free up UART
 CONFIG_PRINTK=n
 CONFIG_BOOT_BANNER=n
 CONFIG_UART_CONSOLE=n
 CONFIG_LOG_BACKEND_UART=n
 
-## Enable tracing subsys + CTF
+# Enable tracing subsys + CTF
 CONFIG_TRACING=y
 CONFIG_TRACING_CTF=y
 CONFIG_TRACING_ASYNC=y
 CONFIG_TRACING_BUFFER_SIZE=8192
 
-## Redirect output to UART
+# Redirect output to UART
 CONFIG_SERIAL=y
 CONFIG_TRACING_BACKEND_UART=y
 ```
@@ -542,7 +542,7 @@ nrfjprog --recover --snr 683485890
 - Run a script to capture the output:
 
 ``` shell
-## from the zephyr repo root
+# from the zephyr repo root
 python ./scripts/tracing/trace_capture_uart.py -d /dev/ttyACM3 -b 115200
 ```
 
@@ -553,7 +553,7 @@ python ./scripts/tracing/trace_capture_uart.py -d /dev/ttyACM3 -b 115200
 - Create a folder with the  configuration files and the captured data
 
 ``` shell
-## from the zephyr repo root
+# from the zephyr repo root
 mkdir -p ctf
 cp subsys/tracing/ctf/tsdl/metadata ctf/
 cp channel0_0 ctf/
@@ -562,7 +562,7 @@ cp channel0_0 ctf/
 - Invoke the parsing script and print the results
 
 ``` shell
-## from the zephyr repo root
+# from the zephyr repo root
 john@jori-pc:~/repos/zephyrproject/zephyr$ python3 ./scripts/tracing/parse_ctf.py -t ctf
 1970-01-01 01:00:00.394012 (+0.000000 s): timer_init
 1970-01-01 01:00:00.394043 (+0.000031 s): timer_start
@@ -697,7 +697,7 @@ We will use the same sample to test out systemview:
 3. Enable tracing with the SystemView backend:
 `zephyr/samples/basic/threads/prj.conf`
 ```
-## Enable tracing subsys + SystemView backend
+# Enable tracing subsys + SystemView backend
 CONFIG_TRACING=y
 CONFIG_TRACING_SYNC=y
 CONFIG_SEGGER_SYSTEMVIEW=y
@@ -781,12 +781,12 @@ In zephyr, the build system can emit that define when setting `CONFIG_NRF_TRACE_
 We can apply this configuration:
 `zephyr/samples/basic/threads/prj.conf`
 ```
-## Enable trace port
+# Enable trace port
 CONFIG_NRF_TRACE_PORT=y
-## Enable monitor, so Ozone can show the threads view
+# Enable monitor, so Ozone can show the threads view
 CONFIG_THREAD_MONITOR=y
 
-## Disable UART to get less unwanted traces
+# Disable UART to get less unwanted traces
 CONFIG_SERIAL=n
 CONFIG_UART_CONSOLE=n
 CONFIG_LOG_BACKEND_UART=n
