@@ -447,7 +447,7 @@ NRF_P0->OUTCLR = (1 << OUTPIN);
 
 /* Configure GPIOTE */
 NRF_GPIOTE->CONFIG[2] = 3; /* Task mode */
-NRF_GPIOTE->CONFIG[2] |= 1 << (8 + OUTPIN); /* Pin 10 */
+NRF_GPIOTE->CONFIG[2] |= OUTPIN << 8; /* Pin 10 */
 NRF_GPIOTE->CONFIG[2] |= 0 << 13; /* Port 0 (line not necessary for P0) */
 NRF_GPIOTE->CONFIG[2] |= 3 << 16; /* Toggle pin on TASKS_OUT */
 NRF_GPIOTE->CONFIG[2] |= 0 << 20; /* Initial pin value is LOW */
