@@ -212,7 +212,7 @@ The [Zephyr tracing sample](https://docs.zephyrproject.org/latest/samples/subsys
 
 Here we will try two things: tracing a sample running on a real MCU (our case a nRF52840) over USB output, and tracing a Bluetooth test running on the babblesim board (ie `native_posix` superset).
 
-The USB output can in some times be not fast enough, and in that case our trace will be incomplete and stacktraces might get messed up.
+The USB output can sometimes be too slow, and in that case our trace will be incomplete and stacktraces might get messed up.
 This is why we also trace something that uses the native output, as this output doesn't drop packets.
 
 ### Over USB
@@ -398,7 +398,7 @@ Fortunately, there is already [a script in the Zephyr tree](https://github.com/z
 
 It is pretty straightforward, but with a few gotchas:
 - Scheduler events can be "missing". E.g. you may not get an ISR exit event but rather a "thread switched in" or "idle" event. That means we have to track some state in the script.
-- Some events are not easily representable, ie the buffer lifetime events.
+- Some events are not easily representable, e.g. the buffer lifetime events.
 - Beginning and End events happening at the same time confuse the UI. We need to [cheat a bit](https://github.com/jori-nordic/zephyr/blob/7d97f7e93c83fe060da6fe218740b68c3c40acfc/scripts/tracing/ctf2ctf.py#L243-L254) and advance the clock by a few nanoseconds in those cases. 
 
 ### Event matching
@@ -416,7 +416,7 @@ After constructing the json event dump, we can add special Metadata events to di
 We will mostly use those events to name the different threads in the UI.
 Event code is `M`.
 
-For example, we store each new thread we encounter in a dict, and a simple for-loop adds their names as meta-events:
+For instance, we store each new thread we encounter in a dict, and a simple for-loop adds their names as meta-events:
 
 ```python
 def add_metadata(name, pid, tid, args):
@@ -480,7 +480,7 @@ The [Tracy profiler](https://github.com/wolfpld/tracy) is primarily intended to 
 It has a pretty nice (and very responsive) UI that we can use standalone though, and handily provides a conversion script for the chrome tracing format.
 
 Unfortunately though, it's a build-it-yourself affair if you're on linux.
-If running in windows, they provide pre-compiled versions [as releases](https://github.com/wolfpld/tracy/releases).
+If you are running windows, they provide pre-compiled versions [as releases](https://github.com/wolfpld/tracy/releases).
 
 ### Building it
 
