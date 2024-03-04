@@ -1,9 +1,9 @@
 ---
 title: "Fvpedal"
 type: "page"
-cover: "img/mech/fv_pedal_6.jpg"
-useRelativeCover : "true"
 ---
+
+![cover](img/mech/fv_pedal_6.jpg)
 
 Summary
 -------

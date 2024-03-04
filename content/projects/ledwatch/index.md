@@ -1,9 +1,10 @@
 ---
 title: "Ledwatch"
 type: "page"
-cover: "img/lw_pcb_real.jpg"
 useRelativeCover : "true"
 ---
+
+![cover](img/lw_pcb_real.jpg)
 
 Summary
 -------

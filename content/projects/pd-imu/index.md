@@ -1,9 +1,10 @@
 ---
 title: "PureData IMU"
 type: "page"
-cover: "img/pd_interface.png"
 useRelativeCover : "true"
 ---
+
+![cover](img/pd_interface.png)
 
 Summary
 -------

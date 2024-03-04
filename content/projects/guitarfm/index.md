@@ -1,9 +1,9 @@
 ---
 title: "Guitarfm"
 type: "page"
-cover: "img/gfm_body_1.jpg"
-useRelativeCover : "true"
 ---
+
+![cover](img/gfm_body_1.jpg)
 
 Summary
 -------

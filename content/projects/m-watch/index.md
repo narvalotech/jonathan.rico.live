@@ -1,10 +1,10 @@
 ---
 title: "Modular wristwatch system"
 type: "page"
-cover: "img/mw_exploded.png"
-useRelativeCover : "true"
 date: "2020-01-04"
 ---
+
+![cover](img/mw_exploded.png)
 
 Intro
 -------
