@@ -3,6 +3,7 @@ title: "Modular wristwatch system"
 type: "page"
 cover: "img/mw_exploded.png"
 useRelativeCover : "true"
+date: "2020-01-04"
 ---
 
 Intro
@@ -105,9 +106,6 @@ The body was designed in SolidWorks, I tried another workflow for designing the 
 Again, printed at shapeways, and the models seems to fit quite nicely, I guess we'll see for sure when I actually build it entirely !
 
 [Assembly STEP file](3d/watch_assembled.step)
-
-{{< view3d model=3d/watch_assembled.glb >}}
-
 
 Having the (rough) 3d models of the component was very helpful for two reasons: 
 - I could verify that my footprints were correct
