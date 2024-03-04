@@ -12,11 +12,9 @@ Debugging embedded devices can pose some interesting challenges:
 
 - Logging comes with a significant performance penalty
   - bug might disappear when logging is enabled
-
 - Interrupting the whole CPU isn't always possible
   - might have peripherals (e.g. TIMERS) generating interrupts
   - code will have expectations about this, will crash on resume
-
 - Bug can come from hardware
   - Logic might be embedded in peripherals (e.g. PPI, SHORTS)
   - Faulty peripheral can break code assumptions

@@ -1,6 +1,6 @@
 baseurl = "https://jonathan.rico.live"
 languageCode = "en-us"
-theme = "hello-friend"
+theme = "archie"
 paginate = 20
 
 staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static/vid"]
@@ -19,6 +19,11 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
   bgColor = "#ffffff"
 
 [params]
+  mode="toggle" # color-mode → light,dark,toggle or auto
+  useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
+  mathjax = false
+  katex = false
+
   # dir name of your blog content (default is `content/posts`)
   contentTypeName = "blog"
   # "light" or "dark"
@@ -51,7 +56,7 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
     title = "Jonathan Rico"
     subtitle = "My personal projects n stuff"
     keywords = ""
-    copyright = ""
+    copyright = "JR"
     menuMore = "Show more"
     writtenBy = "Written by"
     readMore = "Read more"
@@ -62,14 +67,6 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
     dateFormatSingle = "2006-01-02"
     dateFormatList = "2006-01-02"
     lastModDisplay = "Last modified:"
-
-    [languages.en.params.logo]
-      logoText = "[jon@server ~/]$ "
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
 
     [languages.en.menu]
       [[languages.en.menu.main]]
