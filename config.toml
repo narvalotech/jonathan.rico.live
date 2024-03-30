@@ -52,7 +52,7 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
       xHTML = false
 
 [languages]
-  [languages.en]
+  [languages.en.params]
     title = "Jonathan Rico"
     subtitle = "My personal projects n stuff"
     keywords = ""
