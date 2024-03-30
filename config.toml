@@ -52,21 +52,22 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
       xHTML = false
 
 [languages]
-  [languages.en.params]
+  [languages.en]
     title = "Jonathan Rico"
+    copyright = "JR"
+  [languages.en.params]
+    minuteReadingTime = "min read"
+    dateFormatList = "2006-01-02"
+    newerPosts = "Newer posts"
+    writtenBy = "Written by"
+    menuMore = "Show more"
+    readOtherPosts = "Read other posts"
+    readMore = "Read more"
+    lastModDisplay = "Last modified:"
+    olderPosts = "Older posts"
+    dateFormatSingle = "2006-01-02"
     subtitle = "My personal projects n stuff"
     keywords = ""
-    copyright = "JR"
-    menuMore = "Show more"
-    writtenBy = "Written by"
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
-    newerPosts = "Newer posts"
-    olderPosts = "Older posts"
-    minuteReadingTime = "min read"
-    dateFormatSingle = "2006-01-02"
-    dateFormatList = "2006-01-02"
-    lastModDisplay = "Last modified:"
 
     [languages.en.menu]
       [[languages.en.menu.main]]
