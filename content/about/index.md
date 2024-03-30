@@ -1,8 +1,9 @@
 ---
 title: "Jon's projects"
 type: "page"
-cover: "/w53.JPG"
 ---
+
+![w53](/w53.JPG)
 
 About me
 --------
