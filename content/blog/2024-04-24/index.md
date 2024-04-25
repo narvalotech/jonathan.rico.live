@@ -4,7 +4,9 @@ type: "blog"
 date: "2024-04-24"
 ---
 
-Today we will debug a Bluetooth application by using [RR](https://rr-project.org/).
+Today we will debug a Bluetooth application by using [*rr*](https://rr-project.org/).
+
+![zephyr + rr](rr-headline.png)
 
 <!--more-->
 
@@ -13,30 +15,30 @@ Table of contents
 
 {{< table_of_contents >}}
 
-## What is RR
+## What is rr
 
 See the [Official website](https://rr-project.org/).
 
-You can think of it as a GDB "wrapper" that also allows debugging a program in reverse execution order 🤯.
+You can think of it as a GDB backend that also allows executing a program backwards 🤯.
 
-To do that, it records a program's execution and allows replaying it as many times as necessary. Recording alone is useful, as there is less time spent repeating the steps reproducing the bug on every execution.
+To do that, rr records a program's execution and allows replaying as many times as necessary. Recording alone is useful, as there is less time spent repeating the steps reproducing the bug on every execution.
 
-It sounds awesome and it is! I tried to use it a few years ago but never got it to work. At the time I think I needed a newer kernel or there was always some problem preventing it to record properly.
+That sounds awesome and it is! I tried to use it a few years ago but never got it to work. At the time I think I needed a newer kernel or there was always some problem preventing it to record properly.
 
-After a colleague at work tried it without issues, I decided to try it again. Thanks [Aleksander](https://awas.bearblog.dev/)! [Theo](https://www.theobattrel.fr/index.html?lang=en) also helped me remember the right commands.
+After a colleague at work tried it without issues, I decided to try it again. Thanks [Aleksander](https://awas.bearblog.dev/)! [Théo](https://www.theobattrel.fr/index.html?lang=en) also helped me remember the right commands.
 
 ## Environment
 
-We will be using: 
+We will be using:
 - Ubuntu 22.04 (not cool enough for nixos or arch lol)
 - Zephyr at [jori-nordic/rrewinding-time](https://github.com/jori-nordic/zephyr/tree/rrewinding-time/)
 - Babblesim at the revision listed in the [zephyr west manifest](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/west.yml#L37).
 
-We assume 
+We assume
 - The Zephyr environment is [set-up correctly](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
-- Babblesim is compiled and [set-up correctly](https://babblesim.github.io/fetching.html). 
+- Babblesim is compiled and [set-up correctly](https://babblesim.github.io/fetching.html).
   - `BSIM_OUT_PATH` and `BSIM_COMPONENTS_PATH` *have* to be set.
-  
+
 ## Bluetooth terms
 
 Here's some definitions so y'all that don't know Bluetooth can still follow along.
@@ -54,22 +56,22 @@ Don't try to make sense of the abbreviations, naming is a hard problem after all
 - GATT characteristic: a location/row in that table. Here we will read heart-rate measurement data
 - Subscriptions and notifications: are a GATT concept. Basically you subscribe to a peer's row in the data table and the peer sends events when the data changes
 
-## Installing RR
+## Installing rr
 
 See the [Building and Installing](https://github.com/rr-debugger/rr/wiki/Building-And-Installing#packages) page.
 
 For us on ubuntu 22.04, we only have to do this:
 ```bash
-# Install RR
+# Install rr
 sudo apt install rr
 
-# Allow RR to use the perf counters to do its thing
+# Allow rr to use the perf counters to do its thing
 sudo sysctl kernel.perf_event_paranoid=1
 ```
 
 Then test that it works by recording a simple program, e.g. `rr record true`.
 
-### Newer intel CPUs
+### Newer Intel CPUs
 
 On my new-ish work laptop, rr doesn't work.
 It fails with this error:
@@ -82,7 +84,7 @@ jon@jori-laptop-24:~/tmp/rr/obj$ rr record true
 ```
 jon@jori-laptop-24:~/tmp/rr/obj$ ./bin/rr record echo "test"
 rr: Saving execution to trace directory `/home/jon/.local/share/rr/echo-0'.
-[FATAL src/PerfCounters.cc:401:check_working_counters()] 
+[FATAL src/PerfCounters.cc:401:check_working_counters()]
 Got 0 branch events, expected at least 500.
 
 The hardware performance counter seems to not be working. Check
@@ -111,7 +113,7 @@ Aborted (core dumped)
 
 That's [due to the new E cores](https://github.com/rr-debugger/rr/issues/3338) that don't support performance counters.
 
-The solution is to pin RR to a (or multiple) non-efficency cores.
+The solution is to pin rr to a (or multiple) non-efficency cores.
 
 First find out which CPU is "normal". A hint is that they have a higher max frequency:
 ```bash
@@ -134,7 +136,7 @@ CPU NODE SOCKET CORE L1d:L1i:L2:L3 ONLINE    MAXMHZ   MINMHZ      MHZ
  11    0      0    9 15:15:3:0        yes 3900,0000 400,0000 1045.547
 ```
 
-Then pin `rr` to the right group of cores, like so:
+Then pin rr to the right group of cores, like so:
 ```bash
 taskset -c 0-3 ./bin/rr record true
 ```
@@ -150,10 +152,10 @@ rr: Saving execution to trace directory `/home/jon/.local/share/rr/true-1'.
 ### Story
 
 You're an application developer that wants to use the Zephyr RTOS Bluetooth stack:
-- You want to start a scanner. 
-- You get an `-EIO` error from the [well-documented](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/include/zephyr/bluetooth/bluetooth.h#L2273) (😅) host API.
+- You want to start a scanner
+- You get an `-EIO` error from the [well-documented](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/include/zephyr/bluetooth/bluetooth.h#L2273) (😅) host API
 - Where does it come from, what does it mean?
-- Instead of reading more docs, you reach for `rr` 
+- Instead of reading more docs, you reach for rr
 
 ![big brains](big-brains.png)
 
@@ -161,7 +163,7 @@ You're an application developer that wants to use the Zephyr RTOS Bluetooth stac
 
 Our entrypoint will be running [run.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/run.sh).
 
-[build.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/build.sh) will build two images and [run.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/run.sh) a short simulation for them to interact.
+[build.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/build.sh) will build two images and [run.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/run.sh) will run a short simulation for them to interact.
 The two images are a Bluetooth advertiser, and a Bluetooth scanner. The scanner unfortunately doesn't start and reports an enigmatic `-EIO` error.
 
 ![scanner doesn't work](run-sh-eio.png)
@@ -173,7 +175,7 @@ We also trigger a segfault when that error happens, in order to speed up debuggi
 
 The strategy will be simple:
 
-- Record the whole simulation with `rr`, ie wrap `run.sh` directly
+- Record the whole simulation with rr, i.e. wrap `run.sh` directly
 - Start a replay session and attach to the scanner device's process
 - Reverse-step until we hit the source of the error
 
@@ -236,7 +238,7 @@ rr replay -p 3448360
 
 We are dropped into a GDB session. If we `continue` we end up with the segfault.
 
-![RR GDB session](rr-session-opened.png)
+![rr GDB session](rr-session-opened.png)
 
 Then we can use the magic powers of `reverse-` gdb commands to go forwards and backwards in time to help us find the root cause.
 
@@ -255,20 +257,20 @@ What we did in that screencast:
 - We finally end up in `le_set_ext_scan_param()` in the controller's `hci.c`
 - We are in an early return, we print the locals `phys` and `phys_bitmask`
 - We see that we are setting coded PHY in `phys` but the controller doesn't support it in `phys_bitmask`
-- The if-test above hints that we should enable `CONFIG_BT_CTLR_PHY_CODED`
+- The if condition above hints that we should enable `CONFIG_BT_CTLR_PHY_CODED`
 - We add `CONFIG_BT_CTLR_PHY_CODED=y` to our `prj.conf` and the error is gone
 
 ## Now with a real device
 
-That's nice and all, but I want to develop a Bluetooth product that interacts with other devices in the real world. Can `rr` help me for that too?
+That's nice and all, but I want to develop a Bluetooth product that interacts with other devices in the real world. Can rr help me for that too?
 
-Unfortunately, `rr` doesn't work on the small ARM-based system-on-chip devices used for Bluetooth.
+Unfortunately, rr doesn't work on the small ARM-based system-on-chip devices used for Bluetooth.
 
 But! Thanks to the `native_sim` Zephyr target, we can [split our application in half](https://docs.zephyrproject.org/latest/connectivity/bluetooth/bluetooth-tools.html#bluetooth-qemu-native):
 - One half runs on the ARM Bluetooth chip. That's the Controller.
-- The other half runs on the beefy-ass intel CPU that supports `rr`
+- The other half runs on the beefy-ass Intel CPU that supports rr
 
-This split is good, as most of our application logic will be implemented above the Bluetooth Host. And so will be easily debuggable with `rr`.
+This split is good, as most of our application logic will be implemented above the Bluetooth Host. And so will be easily debuggable with rr.
 
 ![Actual footage of the split build](split-build.png)
 
@@ -276,7 +278,7 @@ Thanks to the flexible build system and unified driver API, it's even possible t
 
 ### Story
 
-This time, you are in my shoes. You are a contributor to the Zephyr host and are trying to write a blog post on `rr`. **You need to find a bug**.
+This time, you are in my shoes. You are a contributor to the Zephyr host and are trying to write a blog post on rr. **You need to find a bug**.
 You have an old android device (version 10), you just play around with it and the bt-shell and see if you can observe something weird.
 
 You connect to [your app](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en&gl=US) on an Android phone and subscribe to the heart-rate monitor characteristic.
@@ -285,7 +287,7 @@ You also trigger pairing/bonding. You then start seeing errors all over the logs
 `"ATT channel not connected"`.
 Easy, you think, just grep for it in the code. Welp there are 4 exact matches.
 
-Fortunately you have recorded the whole interaction with `rr`...
+Fortunately, you have recorded the whole interaction with rr...
 
 ### Recording the bug
 
@@ -322,7 +324,7 @@ sudo apt install xterm screen
 sudo setcap 'cap_net_admin+ep' ./build/zephyr/zephyr.exe
 
 # Start recording the Bluetooth shell
-# Since we have extra capabilities, we need to pass extra options to `rr`
+# Since we have extra capabilities, we need to pass extra options to rr
 taskset -c 0-3 sudo -EP --preserve-env=HOME rr record --setuid-sudo ./build/zephyr/zephyr.exe -attach_uart -wait_uart --bt-dev=hci1
 ```
 
@@ -367,7 +369,7 @@ Follows a debugging session where we are able to step forwards and backwards in 
 - The channel that is not connected is `0x80fe100`
 - Alright, let's see when it is disconnected: `break att_chan_detach`
 - `reverse-continue`. we hit `att_chan_detach` but it's for another channel, `0x80fe250`
-- `reverse-continue` again. we get back at the start of the program. 
+- `reverse-continue` again. we get back at the start of the program.
 - it seems the channel is never properly closed, but in a "zombie" state
 - we get back to `att_chan_detach` and go up the stack a bit. It's called from [reject_cmd](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/subsys/bluetooth/host/l2cap.c#L2082) in `l2cap.c`.
 - we read the code and don't understand what this `ident` business is about.
@@ -376,14 +378,14 @@ Follows a debugging session where we are able to step forwards and backwards in 
 - we land in [l2cap_ecred_conn_req()](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/subsys/bluetooth/host/l2cap.c#L544) where we see **a bunch** of channels being mapped to the same `ident` value that the reject command mentions
 - It all clicks, we found the bug
 
-When the connection is secured, the host tries to connect Enhanced ATT channels. It's not super important how it works, but basically the stack will then have a list of channels it can send GATT notifications (our heart-rate data) over. 
+When the connection is secured, the host tries to connect Enhanced ATT channels. It's not super important how it works, but basically the stack will then have a list of channels it can send GATT notifications (our heart-rate data) over.
 
-The stack will loop over all those channels and try to send on each of them, hence the many similar errors. 
-Problem is the channels never actually got established, as the peer (android) is too old and doesn't support enhanced L2CAP channels. It just replied with a REJECT_RSP.
+The stack will loop over all those channels and try to send on each of them, hence the many similar errors.
+Problem is the channels never actually got established, as the peer (android) is too old and doesn't support enhanced L2CAP channels. It just replied with a `REJECT_RSP`.
 
-The bug is that instead of looping over the list of channels that match `ident` in that REJECT_RSP, we only take the first one and close only that channel. The other channels stay in a zombie state, as candidates for sending stuff on, but not actually able to.
+The bug is that instead of looping over the list of channels that match `ident` in that `REJECT_RSP`, we only take the first one and close only that channel. The other channels stay in a zombie state, as candidates for sending stuff on, but not actually able to.
 
-Thanks to `rr`, the bug has been fixed in https://github.com/zephyrproject-rtos/zephyr/pull/71872 .
+Thanks to rr, the bug has been fixed in https://github.com/zephyrproject-rtos/zephyr/pull/71872 .
 
 {{<video location=att-bug-fixed.mp4 >}}
 
@@ -395,4 +397,4 @@ We saw that we not only can debug simulations, but with some craftiness also rec
 
 Definitely something to add to your tool chest if you ask me!
 
-`rr` is sponsored by [Pernosco](https://pernos.co/), which is even more interesting.. Check it out!
+rr is sponsored by [Pernosco](https://pernos.co/), which is even more interesting.. Check it out!
