@@ -4,14 +4,13 @@ type: "blog"
 date: "2024-04-24"
 ---
 
-Today we will debug a Bluetooth application by using [*rr*](https://rr-project.org/).
+Today we will debug a Bluetooth application by using [the rr debugger](https://rr-project.org/).
 
 ![logo of zephyr and rr](rr-headline.png)
 
 <!--more-->
 
-Table of contents
------------------
+# Table of contents
 
 {{< table_of_contents >}}
 
