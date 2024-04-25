@@ -6,7 +6,7 @@ date: "2024-04-24"
 
 Today we will debug a Bluetooth application by using [*rr*](https://rr-project.org/).
 
-![zephyr + rr](rr-headline.png)
+![logo of zephyr and rr](rr-headline.png)
 
 <!--more-->
 
@@ -157,7 +157,7 @@ You're an application developer that wants to use the Zephyr RTOS Bluetooth stac
 - Where does it come from, what does it mean?
 - Instead of reading more docs, you reach for rr
 
-![big brains](big-brains.png)
+![Galaxy brain meme with 4 levels. The first one has the label "Read the doc", the second "Enable debug logging", the third "Try to follow function calls manually" and the fourth "Reach for time-travelling debugger".](big-brains.png)
 
 ### Reproducing the error
 
@@ -166,7 +166,7 @@ Our entrypoint will be running [run.sh](https://github.com/jori-nordic/zephyr/bl
 [build.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/build.sh) will build two images and [run.sh](https://github.com/jori-nordic/zephyr/blob/rrewinding-time/samples/bluetooth/scan_error/run.sh) will run a short simulation for them to interact.
 The two images are a Bluetooth advertiser, and a Bluetooth scanner. The scanner unfortunately doesn't start and reports an enigmatic `-EIO` error.
 
-![scanner doesn't work](run-sh-eio.png)
+![screenshot showing scanner error](run-sh-eio.png)
 
 For the sake of the blog post, we will pretend we don't have logs or other means of debugging this error.
 We also trigger a segfault when that error happens, in order to speed up debugging.
@@ -238,7 +238,7 @@ rr replay -p 3448360
 
 We are dropped into a GDB session. If we `continue` we end up with the segfault.
 
-![rr GDB session](rr-session-opened.png)
+![screenshot of the rr GDB session](rr-session-opened.png)
 
 Then we can use the magic powers of `reverse-` gdb commands to go forwards and backwards in time to help us find the root cause.
 
@@ -272,7 +272,8 @@ But! Thanks to the `native_sim` Zephyr target, we can [split our application in 
 
 This split is good, as most of our application logic will be implemented above the Bluetooth Host. And so will be easily debuggable with rr.
 
-![Actual footage of the split build](split-build.png)
+![Meme with two dogs. The first one represent a swole doge and is located on the left of the image. There is two labels, one on top of it saying "Intel core i9" and one at the bottom of it saying "Host + app". The second dog represent a crying dog, it's located on the right side of the image. It has two labels, one on top of it saying "ARM Cortex-M" and one at the bottom of it saying "Controller". In between the two dogs there is a logo of a link with a label saying "SERIAL" on top of it.
+](split-build.png)
 
 Thanks to the flexible build system and unified driver API, it's even possible to do a sort of "reverse-semihosting" and use physical sensors on the big computer. Maybe I'll do a blog post on that next :)
 
