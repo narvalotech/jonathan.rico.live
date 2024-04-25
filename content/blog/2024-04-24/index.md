@@ -2,6 +2,7 @@
 title: "RRewinding time (with Zephyr RTOS)"
 type: "blog"
 date: "2024-04-24"
+cover: "rr-headline.png"
 ---
 
 Today we will debug a Bluetooth application by using [the rr debugger](https://rr-project.org/).
