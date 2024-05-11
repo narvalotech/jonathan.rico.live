@@ -7,6 +7,7 @@ date: "2019-12-29"
 *A project is never truly completed, but abandoned*
 
 ## 2023
+- [FV1 clip](../fv1clip): Wearable guitar effects processor. Follow-up to [FVpedal](../fvpedal).
 - [Split keyboard](../split-keyboard) : A mechanical split keyboard
 - [Usb switch](../usb-switch) : A USB power/data cutoff switch.
 
