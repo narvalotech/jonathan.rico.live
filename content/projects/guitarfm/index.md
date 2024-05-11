@@ -1,6 +1,7 @@
 ---
 title: "Guitarfm"
 type: "page"
+date: "2016-01-01"
 ---
 
 ![cover](img/gfm_body_1.jpg)

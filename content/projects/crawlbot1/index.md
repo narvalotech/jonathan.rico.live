@@ -1,6 +1,7 @@
 ---
 title: "CrawlBot 1"
 type: "page"
+date: "2010-01-01"
 ---
 
 Summary

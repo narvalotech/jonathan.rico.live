@@ -1,7 +1,7 @@
 ---
 title: "PureData IMU"
 type: "page"
-useRelativeCover : "true"
+date: "2015-01-01"
 ---
 
 ![cover](img/pd_interface.png)

@@ -1,6 +1,7 @@
 ---
 title: "Fvpedal"
 type: "page"
+date: "2014-01-01"
 ---
 
 ![cover](img/mech/fv_pedal_6.jpg)

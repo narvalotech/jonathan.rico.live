@@ -1,7 +1,7 @@
 ---
 title: "Ledwatch"
 type: "page"
-useRelativeCover : "true"
+date: "2017-01-01"
 ---
 
 ![cover](img/lw_pcb_real.jpg)
