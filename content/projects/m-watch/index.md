@@ -269,14 +269,10 @@ I still wouldn't pick freecad over solidworks for a commercial product, but I th
 
 ### Assembly glamour shots 
 
-![Display back](img/photos/as_disp_back.JPG)
-[High res](img/photos/hr/as_disp_back.JPG)
-![Main PCB front](img/photos/as_core2.JPG)
-[High res](img/photos/hr/as_core2.JPG)
-![Main PCB back](img/photos/as_core_back.JPG)
-[High res](img/photos/hr/as_core_back.JPG)
-![Main PCB with battery](img/photos/as_battery.JPG)
-[High res](img/photos/hr/as_battery.JPG)
+![Display back](img/photos/hr/as_disp_back.JPG)
+![Main PCB front](img/photo/hr/as_core2.JPG)
+![Main PCB back](img/photos/hr/as_core_back.JPG)
+![Main PCB with battery](img/photos/hr/as_battery.JPG)
 
 ### Cradle
 
