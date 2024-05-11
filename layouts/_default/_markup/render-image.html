@@ -1,1 +1,16 @@
-<img src="{{ .Destination | safeURL }}" alt="{{ .Text | plainify }}" class="center" style="border-radius: 8px;" />
+<!-- Assuming the image src is available as a variable or can be inferred -->
+<!-- made by Phind: https://www.phind.com/search?cache=q5jf1q7xxv086n81obi4bdl0 -->
+{{ $src := .Destination | safeURL }} <!-- .Destination should be the URL or path from the Markdown -->
+{{ $original := .Page.Resources.GetMatch (printf "**/%s" ($src | path.Base)) }}
+{{ if $original }}
+    {{ $resized := $original.Resize "640x" }}
+    <a href="{{ $original.RelPermalink }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ $resized.RelPermalink }}" alt="{{ .Text }}" loading="lazy">
+    </a>
+{{ else }}
+    <!-- use default processing if resize fails -->
+    <img src="{{ .Destination | safeURL }}"
+    {{- with .Text }} alt="{{ . }}"{{ end -}}
+    {{- with .Title }} title="{{ . }}"{{ end -}}
+    >
+{{ end }}
