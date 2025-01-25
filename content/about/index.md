@@ -11,14 +11,21 @@ About me
 Welcome to my personal website !  
 My name is Jonathan and I work in embedded electronics.
 
-I used to design electronics, and now I work as software engineer on the Zephyr Bluetooth host at Nordicsemi.
+I currently work at [Eco-Stor](https://www.eco-stor.com/solutions/second-life),
+breathing new life into old electric vehicle batteries.
 
-Here's my CV for the more curious :) [here](/cv_rico_jonathan_en.pdf)
+And my CV for the more curious :) [cv.pdf](/cv_rico_jonathan_en.pdf)
 
 You can find me on:
 - [Github as narvalotech (perso)](https://github.com/narvalotech)
 - [Github as jori-nordic (pro)](https://github.com/jori-nordic)
 - [LinkedIn](https://www.linkedin.com/in/jonathan-rico-marc/)
+
+Blog
+----
+
+On [the blog]( {{<relref "/blog">}}) you will find some articles about various
+tech I use or have used. Mostly written as reference for myself.
 
 Projects
 --------
