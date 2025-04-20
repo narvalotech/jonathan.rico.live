@@ -6,6 +6,10 @@ date: "2019-12-29"
 
 *A project is never truly completed, but abandoned*
 
+## 2024
+
+- [No-rush](../norush): Online train timetable
+
 ## 2023
 - [FV1 clip](../fv1clip): Wearable guitar effects processor. Follow-up to [FVpedal](../fvpedal).
 - [Split keyboard](../split-keyboard) : A mechanical split keyboard
