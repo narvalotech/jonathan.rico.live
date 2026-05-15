@@ -1,0 +1,3 @@
+<video controls loop muted playsinline {{ if .Get "width" }}width="{{ .Get "width" }}"{{ end }} max-height="500">
+  <source src="{{ .Get "location" }}" type="video/mp4">
+</video>

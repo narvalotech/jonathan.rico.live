@@ -1,0 +1,27 @@
+{{ $src := .Destination }}
+{{ $original := .Page.Resources.GetMatch (printf "**/%s" ($src | path.Base)) }}
+
+{{ if $original }}
+    {{/* Define target width */}}
+    {{ $targetWidth := 640 }}
+    {{ $displayImage := $original }}
+
+    {{/* Only resize if the image is wider than 640px */}}
+    {{ if gt $original.Width $targetWidth }}
+        {{ $displayImage = $original.Resize (printf "%dx" $targetWidth) }}
+    {{ end }}
+
+    <a href="{{ $original.RelPermalink }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ $displayImage.RelPermalink }}"
+             width="{{ $displayImage.Width }}"
+             height="{{ $displayImage.Height }}"
+             alt="{{ .Text }}"
+             loading="lazy">
+    </a>
+{{ else }}
+    {{/* Fallback for images in /static or external URLs */}}
+    <img src="{{ .Destination | safeURL }}"
+         {{- with .Text }} alt="{{ . }}"{{ end -}}
+         {{- with .Title }} title="{{ . }}"{{ end -}}
+         loading="lazy">
+{{ end }}

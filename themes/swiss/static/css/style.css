@@ -1,0 +1,440 @@
+/* === SWISS THEME — Font Faces === */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inter-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/inter-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/inter-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/dm-serif-display-regular.woff2") format("woff2");
+}
+/* === SWISS THEME — Color Variables === */
+:root {
+  --bg: #f8f8f6;
+  --fg: #111111;
+  --border: #111111;
+  --accent: #111111;
+  --muted: #666666;
+  --border-width: 1px;
+  /* Code: light */
+  --code-bg: #f5f5f0;
+  --code-fg: #1e1e1e;
+  --syn-keyword: #0000ff;
+  --syn-string: #a31515;
+  --syn-number: #098658;
+  --syn-comment: #6a737d;
+  --syn-function: #795e26;
+  --syn-type: #267f99;
+  --syn-variable: #1e1e1e;
+}
+
+[data-theme="dark"] {
+  --bg: #111111;
+  --fg: #f0f0ee;
+  --border: #f0f0ee;
+  --accent: #f0f0ee;
+  --muted: #999999;
+  /* Code: dark */
+  --code-bg: #1e1e1e;
+  --code-fg: #d4d4d4;
+  --syn-keyword: #569cd6;
+  --syn-string: #ce9178;
+  --syn-number: #b5cea8;
+  --syn-comment: #6a9955;
+  --syn-function: #dcdcaa;
+  --syn-type: #4ec9b0;
+  --syn-variable: #9cdcfe;
+}
+
+/* === Reset === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Base === */
+html {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+  line-height: 1.6;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern" 1, "liga" on, "dlig" off, "onum" off, "lnum" off, "ss01" off;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  overflow-wrap: break-word;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3rem; text-transform: uppercase; }
+h2 { font-size: 1.8rem; text-transform: uppercase; border-bottom: var(--border-width) solid var(--border); padding-bottom: 0.25rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.6rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 700;
+}
+
+a:hover {
+  color: var(--syn-string);
+  text-decoration: underline;
+}
+
+/* === Navigation === */
+.site-header {
+  border-bottom: var(--border-width) solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
+.nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.nav-title {
+  font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-right {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: var(--border-width) solid var(--border);
+  color: var(--fg);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.15rem 0.5rem;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* === Container / Grid === */
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* === Page Content === */
+.page-content {
+  width: 100%;
+}
+
+.page-content img {
+  max-width: 100%;
+  height: auto;
+  border: var(--border-width) solid var(--border);
+}
+
+/* === Post === */
+.post-header {
+  margin-bottom: 2rem;
+  border-bottom: var(--border-width) solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.post-title {
+  margin-top: 0;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border: var(--border-width) solid var(--border);
+}
+
+.post-content pre {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  border: var(--border-width) solid var(--border);
+  border-radius: 0;
+}
+
+.post-content code {
+  font-size: 0.85rem;
+}
+
+.post-content p code,
+.post-content li code {
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+  padding: 0.15em 0.4em;
+  border: var(--border-width) solid color-mix(in srgb, var(--border) 30%, transparent);
+}
+
+/* === Syntax Highlighting === */
+.highlight pre {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  border: var(--border-width) solid var(--border);
+}
+
+/* --- Light syntax colors --- */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp,
+.highlight .kr, .highlight .kt { color: var(--syn-keyword); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .se,
+.highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl { color: var(--syn-string); }
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh,
+.highlight .mo, .highlight .il { color: var(--syn-number); }
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs,
+.highlight .cp, .highlight .cpf { color: var(--syn-comment); font-style: italic; }
+.highlight .nf, .highlight .fm { color: var(--syn-function); }
+.highlight .nc, .highlight .nn, .highlight .nb { color: var(--syn-type); }
+.highlight .o, .highlight .ow { color: var(--code-fg); }
+.highlight .n, .highlight .na, .highlight .nv { color: var(--syn-variable); }
+.highlight .gh, .highlight .gu { color: var(--syn-keyword); font-weight: 700; }
+.highlight .gi { color: var(--syn-string); }
+.highlight .gd { color: #a31515; }
+
+.post-content blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.post-content ul, .post-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.post-content table th,
+.post-content table td {
+  border: var(--border-width) solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.post-content table th {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+/* === List Page === */
+.post-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.post-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.post-list-item a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.post-list-item a:hover {
+  text-decoration: underline;
+}
+
+.post-list-item time {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+/* === Footer === */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: var(--border-width) solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === Table of Contents === */
+.toc-title {
+  font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Video === */
+video {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+/* === Details === */
+details {
+  border: var(--border-width) solid var(--border);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  body {
+    max-width: 100%;
+    padding: 1.25rem;
+    font-size: 15px;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.3rem; }
+  h3, h4 { font-size: 1.1rem; }
+
+  .nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .nav-right {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .post-list-item {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .post-content pre,
+  .highlight pre {
+    font-size: 0.72rem;
+    padding: 0.75rem;
+    max-width: calc(100vw - 2.5rem);
+  }
+
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .toc-title {
+    font-size: 1.1rem;
+  }
+}

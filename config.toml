@@ -1,7 +1,8 @@
 baseurl = "https://jonathan.rico.live"
 languageCode = "en-us"
-theme = "archie"
-paginate = 20
+theme = "swiss"
+[pagination]
+  pagerSize = 20
 
 staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static/vid"]
 
@@ -34,6 +35,10 @@ staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static
   showReadingTime = false
 
 [markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    guessSyntax = true
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
