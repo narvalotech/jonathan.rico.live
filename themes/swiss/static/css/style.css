@@ -126,6 +126,20 @@ a:hover {
   text-decoration: underline;
 }
 
+video {
+  /* Constrain the height */
+  max-height: 550px;
+
+  /* Ensure the width adjusts to maintain aspect ratio */
+  width: auto;
+
+  /* Optional: keeps the video from overflowing horizontally on small screens */
+  max-width: 100%;
+
+  /* Ensures the video content itself scales correctly within the element */
+  object-fit: contain;
+}
+
 /* === Navigation === */
 .site-header {
   border-bottom: var(--border-width) solid var(--border);
