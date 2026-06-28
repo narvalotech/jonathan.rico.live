@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
-  <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-  {{ with .Description | default .Summary }}<meta property="og:description" content="{{ . | plainify | truncate 200 }}">{{ end }}
-  {{ with .Params.cover }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
-  <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
-  <script>
-    (function(){
-      var s = localStorage.getItem('theme') || 'system';
-      if (s === 'dark' || (s === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-    })();
-  </script>
+  {{ partial "head.html" . }}
 </head>
 <body>
   <header class="site-header">
