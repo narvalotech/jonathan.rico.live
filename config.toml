@@ -1,5 +1,5 @@
 baseurl = "https://jonathan.rico.live"
-languageCode = "en-us"
+locale = "en-us"
 theme = "swiss"
 staticDir = ["static/other", "static/pdf", "static/img", "static/audio", "static/vid"]
 [pagination]
