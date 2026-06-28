@@ -11,14 +11,12 @@ About me
 Welcome to my personal website !  
 My name is Jonathan and I work in embedded electronics.
 
-I currently work at [Eco-Stor](https://www.eco-stor.com/solutions/second-life),
-breathing new life into old electric vehicle batteries.
+I currently work at [Garmin Canada](https://www.garmin.com/en-CA/company/about-garmin/) in one of the connectivity teams.
 
-And my CV for the more curious :) [cv.pdf](/cv_rico_jonathan_en.pdf)
+Here's my CV for the more curious :) [cv.pdf](/cv_rico_jonathan_en.pdf) Not guaranteed to be up to date!
 
 You can find me on:
-- [Github as narvalotech (perso)](https://github.com/narvalotech)
-- [Github as jori-nordic (pro)](https://github.com/jori-nordic)
+- [Github as narvalotech](https://github.com/narvalotech)
 - [LinkedIn](https://www.linkedin.com/in/jonathan-rico-marc/)
 
 Blog
