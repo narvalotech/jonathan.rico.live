@@ -2,6 +2,9 @@
 title: "The Year of the Windows Desktop"
 type: "blog"
 date: "2026-05-14"
+slug: "year-of-the-windows-desktop"
+aliases:
+  - "/blog/2026-05-16/"
 ---
 
 Windows is making great strides in usability and is on the verge of being a good enough developer desktop. In this article we'll explore what has progressed, and what is still to be done.

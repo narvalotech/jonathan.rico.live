@@ -2,6 +2,9 @@
 title: "RRewinding time (with Zephyr RTOS)"
 type: "blog"
 date: "2024-04-24"
+slug: "rrewinding-time-zephyr"
+aliases:
+  - "/blog/2024-04-24/"
 cover: "rr-headline.png"
 ---
 

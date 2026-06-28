@@ -2,6 +2,9 @@
 title: "Debugging on embedded devices"
 type: "blog"
 date: "2022-10-10"
+slug: "debugging-embedded-devices"
+aliases:
+  - "/blog/2022-10-10/"
 ---
 
 This post provides an non-exhaustive overview of the techniques that can be used to debug embedded devices.

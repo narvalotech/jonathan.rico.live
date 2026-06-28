@@ -2,6 +2,9 @@
 title: "Tracing network buffer lifetime on Zephyr RTOS"
 type: "blog"
 date: "2023-11-13"
+slug: "tracing-network-buffer-lifetime-zephyr"
+aliases:
+  - "/blog/2023-11-13/"
 cover: "files/tracy-screenshot.png"
 useRelativeCover : "true"
 ---
@@ -30,7 +33,7 @@ Table of contents
 
 ## Common Tracing Format and netbuf events
 
-I will refer to [my previous blog post](../2022-10-10/#zephyrlinux-ctf) for an introduction on CTF usage in Zephyr.
+I will refer to [my previous blog post](../debugging-embedded-devices/#zephyrlinux-ctf) for an introduction on CTF usage in Zephyr.
 
 Here we want to add events to cover the allocation, reference counting and destruction of network buffers.
 We want to be able to visualize alongside scheduler (ie ISRs, active threads) buffer utilization in order to identify starvation or other performance issues.

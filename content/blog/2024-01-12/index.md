@@ -2,6 +2,9 @@
 title: "Using the Zephyr host with an SPI controller"
 type: "blog"
 date: "2024-01-12"
+slug: "zephyr-host-spi-controller"
+aliases:
+  - "/blog/2024-01-12/"
 cover: "files/hardware.jpg"
 useRelativeCover : "true"
 ---
