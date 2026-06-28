@@ -21,7 +21,7 @@
 {{ else }}
     {{/* Fallback for images in /static or external URLs */}}
     <img src="{{ .Destination | safeURL }}"
-         {{- with .Text }} alt="{{ . }}"{{ end -}}
-         {{- with .Title }} title="{{ . }}"{{ end -}}
+         {{- with .Text }} alt="{{ . }}"{{ end }}
+         {{- with .Title }} title="{{ . }}"{{ end }}
          loading="lazy">
 {{ end }}
