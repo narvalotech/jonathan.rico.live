@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+<link rel="icon" type="image/png" href="{{ "/favico.png" | absURL }}">
 <link rel="canonical" href="{{ .Permalink }}">
 {{ with .Description | default .Summary }}<meta name="description" content="{{ . | plainify | truncate 200 }}">{{ end }}
 <meta property="og:title" content="{{ .Title }}">
@@ -16,11 +17,11 @@
   {{ else }}
     {{ $coverImage = .Params.cover | absURL }}
   {{ end }}
+{{ else }}
+  {{ $coverImage = "/favico-512.png" | absURL }}
 {{ end }}
-{{ with $coverImage }}
-<meta property="og:image" content="{{ . }}">
-<meta name="twitter:image" content="{{ . }}">
-{{ end }}
+<meta property="og:image" content="{{ $coverImage }}">
+<meta name="twitter:image" content="{{ $coverImage }}">
 {{ if .IsPage }}
 <meta property="og:article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
 {{ with .Lastmod }}<meta property="og:article:modified_time" content="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ end }}
